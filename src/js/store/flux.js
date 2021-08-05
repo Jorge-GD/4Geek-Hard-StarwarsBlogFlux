@@ -20,21 +20,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						return res.json();
 					})
-					.then(jsonPlanets => console.log(jsonPlanets));
-			},
-			//
-			getStarhips: () => {
-				fetch(URL_BASE.concat("starship"))
-					.then(response => {
-						if (!response.ok) {
-							throw new Error("Something is wrong");
-						}
-						return response.json();
-					})
-					.then(jsonStarships => startship[jsonStarships])
-				//console.log(jsonStarships);
 					.then(jsonPlanets => {
-						setStore({ planets: [...getStore().planets, ...jsonPlanets.results].flat() });
+						setStore({ planets: [...getStore().planets, ...jsonPlanets.results] });
 						if (jsonPlanets.next == "null") {
 							//Quitar == "null" para que se carguen todas
 							setStore({ nextPlanet: jsonPlanets.next });

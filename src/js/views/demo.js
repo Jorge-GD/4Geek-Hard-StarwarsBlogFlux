@@ -11,6 +11,7 @@ export const Demo = () => {
 
 	useEffect(
 		() => {
+			console.log("Estoy en demo", store.planets);
 			setcardPlanet(
 				store.planets.map((inside, ind) => {
 					return <PlanetCard name={inside.name} url={inside.url} key={ind + 1} iam={ind} />;
