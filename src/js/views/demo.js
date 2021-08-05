@@ -23,15 +23,19 @@ export const Demo = () => {
 	return (
 		<Fragment>
 			<div className="planetcontainer">
-				<div className="styleCardPlanet">{cardPlanet}</div>
-				<div className="planet">
-					<div className="wrap">
-						<div className="background" />
-						<div className="clouds" />
-					</div>
-					<div className="mask" />
-				</div>
+				<div className="styleCardPlanet">
+					<div>{cardPlanet}</div>
+					<div>
+						<div className="planet">
+							<div className="wrap">
+								<div className="background" />
+								<div className="clouds" />
+							</div>
 
+							<div className="mask" />
+						</div>
+					</div>
+				</div>
 				<Link to="/">
 					<button className="btn btn-primary">Back home</button>
 				</Link>
