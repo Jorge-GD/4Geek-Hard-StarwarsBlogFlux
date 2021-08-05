@@ -3,10 +3,11 @@ const URL_BASE = "https://www.swapi.tech/api/";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			characters: [],
+			people: [],
 			starship: [],
 			planets: [],
-			nextPlanet: ""
+			nextPlanet: "",
+			nextPeople: ""
 		},
 		actions: {
 			getPlanets: () => {
@@ -29,9 +30,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 						console.log(getStore().planets);
 					});
+			},
+			getPeople: () => {
+				let url = getStore().nextPeople ? getStore().nextPeople : URL_BASE.concat("people?page=1&limit=10");
+
+				fetch(url)
+					.then(res => {
+						if (!res.ok) {
+							throw new Error("Algo ha ido mal");
+						}
+
+						return res.json();
+					})
+					.then(jsonPeople => {
+						setStore({ people: [...getStore().people, ...jsonPeople.results] });
+						if (jsonPeople.next == "null") {
+							//Quitar == "null" para que se carguen todas
+							setStore({ nextPeople: jsonPeople.next });
+							getActions().getPeople();
+						}
+						console.log(getStore().people);
+					});
 			}
 		}
 	};
 };
-
 export default getState;
