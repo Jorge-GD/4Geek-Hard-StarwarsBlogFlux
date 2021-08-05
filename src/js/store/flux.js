@@ -29,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return response.json();
 					})
 					.then(jsonStarships => startship[jsonStarships]);
-				console.log(jsonStarships);
+				//console.log(jsonStarships);
 			}
 		}
 	};
