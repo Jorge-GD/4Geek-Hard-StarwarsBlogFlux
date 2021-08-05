@@ -18,6 +18,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return res.json();
 					})
 					.then(jsonPlanets => console.log(jsonPlanets));
+			},
+			//
+			getStarhips: () => {
+				fetch(URL_BASE.concat("starship"))
+					.then(response => {
+						if (!response.ok) {
+							throw new Error("Something is wrong");
+						}
+						return response.json();
+					})
+					.then(jsonStarships => startship[jsonStarships]);
+				console.log(jsonStarships);
 			}
 		}
 	};
