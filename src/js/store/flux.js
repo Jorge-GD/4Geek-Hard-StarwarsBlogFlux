@@ -5,13 +5,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			characters: [],
 			starship: [],
-			planets: []
+			planets: [],
+			nextPlanet: ""
 		},
 		actions: {
 			getPlanets: () => {
-				let allPlanets = [];
+				let url = getStore().nextPlanet ? getStore().nextPlanet : URL_BASE.concat("planets?page=1&limit=10");
 
-				fetch(URL_BASE.concat("planets?page=1&limit=10"))
+				fetch(url)
 					.then(res => {
 						if (!res.ok) {
 							throw new Error("Algo ha ido mal");
@@ -33,11 +34,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(jsonStarships => startship[jsonStarships])
 				//console.log(jsonStarships);
 					.then(jsonPlanets => {
-						jsonPlanets.results.map((planets, index) => {
-							allPlanets.push(planets);
-						});
-
-						setStore({ planets: allPlanets });
+						setStore({ planets: [...getStore().planets, ...jsonPlanets.results].flat() });
+						if (jsonPlanets.next == "null") {
+							//Quitar == "null" para que se carguen todas
+							setStore({ nextPlanet: jsonPlanets.next });
+							getActions().getPlanets();
+						}
+						console.log(getStore().planets);
 					});
 			}
 		}
