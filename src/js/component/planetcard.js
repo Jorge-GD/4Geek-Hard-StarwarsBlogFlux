@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 const PlanetCard = props => {
 	const [properties, setProperties] = useState();
 
-	useEffect(() => {
+	/*	useEffect(() => {
 		fetch(props.url)
 			.then(res => {
 				if (!res.ok) {
@@ -17,7 +17,7 @@ const PlanetCard = props => {
 			.then(jsonInfoPlanets => {
 				setProperties(jsonInfoPlanets.result);
 			});
-	}, []);
+	}, []);*/
 
 	return (
 		<div className="card">

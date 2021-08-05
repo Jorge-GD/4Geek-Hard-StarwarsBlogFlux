@@ -8,13 +8,7 @@ import  PlanetCard from "../component/planetcard.js";
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
 
-	const planetsForAll = () => {
-		let saveThePlanet = [];
-		for (let a = 0; a < store.planets.length; a++) {
-			saveThePlanet.push(<li>{store.planets[a].name}</li>);
-		}
-		return saveThePlanet;
-	};
+
 
 	return (
 		<div className="container">
