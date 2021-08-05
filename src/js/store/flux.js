@@ -5,11 +5,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			people: [],
 			starship: [],
-			planets: []
+			planets: [],
+			nextPlanet: "",
+			nextPeople: ""
 		},
 		actions: {
-			getPeople: () => {
-				fetch(URL_BASE.concat("people"))
+			getPlanets: () => {
+				let url = getStore().nextPlanet ? getStore().nextPlanet : URL_BASE.concat("planets?page=1&limit=10");
+
+				fetch(url)
 					.then(res => {
 						if (!res.ok) {
 							throw new Error("Algo ha ido mal");
@@ -17,7 +21,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						return res.json();
 					})
-					.then(jsonPeople => console.log(jsonPeople));
+					.then(jsonPlanets => {
+						setStore({ planets: [...getStore().planets, ...jsonPlanets.results] });
+						if (jsonPlanets.next == "null") {
+							//Quitar == "null" para que se carguen todas
+							setStore({ nextPlanet: jsonPlanets.next });
+							getActions().getPlanets();
+						}
+						console.log(getStore().planets);
+					});
+			},
+			getPeople: () => {
+				let url = getStore().nextPeople ? getStore().nextPeople : URL_BASE.concat("people?page=1&limit=10");
+
+				fetch(url)
+					.then(res => {
+						if (!res.ok) {
+							throw new Error("Algo ha ido mal");
+						}
+
+						return res.json();
+					})
+					.then(jsonPeople => {
+						setStore({ people: [...getStore().people, ...jsonPeople.results] });
+						if (jsonPeople.next == "null") {
+							//Quitar == "null" para que se carguen todas
+							setStore({ nextPeople: jsonPeople.next });
+							getActions().getPeople();
+						}
+						console.log(getStore().people);
+					});
 			}
 		}
 	};

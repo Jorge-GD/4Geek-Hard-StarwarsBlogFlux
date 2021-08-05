@@ -1,0 +1,38 @@
+.footer{
+    background-color: black;  
+    margin-top: auto;
+    display: flex;
+    height: 17rem
+    
+}
+
+.footer_div1{
+    width: 33%;
+    //height: 30rem
+    margin: auto;
+    
+
+}
+h3{
+    color: whitesmoke;
+}
+.footer_div2 {
+    background: url("https://static-mh.content.disney.io/starwars/assets/footer/vader_2-86e8fdb4e26d.jpg");
+    position:relative;
+    //opacity: 0.65;
+    background-position: center;
+    //background-repeat: no-repeat;
+    //background-size: cover;
+    width: 33%;
+    background-repeat: no-repeat;
+    height: 17rem
+}
+.footer_div3{
+    width: 33%;
+    //height: 17rem
+    margin: auto;
+
+}
+ul{
+    list-style:none;
+}
