@@ -9,7 +9,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			getPlanets: () => {
-				fetch(URL_BASE.concat("planets"))
+				let allPlanets = [];
+
+				fetch(URL_BASE.concat("planets?page=1&limit=10"))
 					.then(res => {
 						if (!res.ok) {
 							throw new Error("Algo ha ido mal");
@@ -17,7 +19,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						return res.json();
 					})
-					.then(jsonPlanets => console.log(jsonPlanets));
+					.then(jsonPlanets => {
+						jsonPlanets.results.map((planets, index) => {
+							allPlanets.push(planets);
+						});
+
+						setStore({ planets: allPlanets });
+					});
 			}
 		}
 	};
