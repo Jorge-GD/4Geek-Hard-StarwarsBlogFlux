@@ -13,9 +13,15 @@ export const Navbar = () => {
 					/>
 				</Link>
 				<div className="socialMedia">
-					<i className="fab fa-facebook-f" />
-					<i className="fab fa-twitter" />
-					<i className="fab fa-instagram" />
+					<a href="https://www.facebook.com/StarWars/">
+						<i className="fab fa-facebook-f" />
+					</a>
+					<a href="https://twitter.com/starwars?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">
+						<i className="fab fa-twitter" />
+					</a>
+					<a href="https://www.instagram.com/starwars/?hl=en">
+						<i className="fab fa-instagram" />
+					</a>
 				</div>
 			</div>
 
