@@ -37,19 +37,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(url)
 					.then(res => {
 						if (!res.ok) {
-							throw new Error("Algo ha ido mal");
+							throw new Error("oops");
 						}
 
 						return res.json();
 					})
 					.then(jsonPeople => {
 						setStore({ people: [...getStore().people, ...jsonPeople.results] });
-						if (jsonPeople.next == "null") {
-							//Quitar == "null" para que se carguen todas
+						if (jsonPeople.next) {
 							setStore({ nextPeople: jsonPeople.next });
 							getActions().getPeople();
 						}
-						console.log(getStore().people);
+					})
+					.catch(error => {
+						console.log(error);
 					});
 			}
 		}
