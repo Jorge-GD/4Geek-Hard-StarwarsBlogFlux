@@ -31,12 +31,17 @@ const injectContext = PassedComponent => {
 		 **/
 
 		useEffect(() => {
-			//state.actions.getPeople();
-			//state.actions.getInfoPlanets();
-
-			//state.actions.getStarhips();
-
+			localStorage.getItem("people")
+				? state.actions.getPeople(localStorage.getItem("people"))
+				: state.actions.getPeople();
+			
 			state.actions.getPlanets();
+			//state.actions.getStarhips();
+			state.actions.getPeople();
+
+			localStorage.getItem("planets")
+				? state.actions.getPlanets(localStorage.getItem("planets"))
+				: state.actions.getPlanets();
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
