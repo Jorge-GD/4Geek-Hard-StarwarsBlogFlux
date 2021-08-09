@@ -1,6 +1,16 @@
-import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
-import "../../styles/home.scss";
-import { Footer } from "../component/footer.js";
+import React, { useContext, Fragment } from "react";
+import { Context } from "../store/appContext";
 
-export const Home = () => <div className="text-center mt-5" />;
+import "../../styles/home.scss";
+
+import { Carrousel } from "../component/carrousel.js";
+
+export const Home = () => {
+	const { store, actions } = useContext(Context);
+
+	return (
+		<Fragment>
+			<Carrousel />
+		</Fragment>
+	);
+};
