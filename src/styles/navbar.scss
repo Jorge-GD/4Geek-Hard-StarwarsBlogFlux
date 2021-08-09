@@ -1,0 +1,50 @@
+.div_buttons {
+    color: transparent;
+    border-color: transparent;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    justify-content: space-around;
+    display: table;
+    margin: auto;
+}
+.btn{
+    color:yellow;
+    font-weight: bold;
+    justify-content: space-around;
+    display: inline-table;
+}
+
+.starWarsLogo{
+   display: table;
+   margin:0;
+}
+
+.ml-auto{
+display: inline-block;
+justify-content: space-around;
+}
+
+.navbar{
+    display: table;
+    margin: auto;
+}
+
+nav{
+    background-color: black;
+    width: 100%;
+}
+
+.sWLogo{
+    display:table;
+    margin:auto;
+    width:12rem;
+    height:6rem;
+}
+
+.socialMedia {
+    color:yellow;
+}
+
+i{
+    width: 2rem;
+}

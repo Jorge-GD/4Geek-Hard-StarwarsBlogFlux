@@ -1,39 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, Fragment } from "react";
 
+import { Context } from "../store/appContext";
 import "../../styles/planetcardstyle.scss";
 import PropTypes from "prop-types";
 
 const PlanetCard = props => {
-	const [properties, setProperties] = useState();
-
-	useEffect(() => {
-		fetch(props.url)
-			.then(res => {
-				if (!res.ok) {
-					throw new Error("Algo ha ido mal");
-				}
-				return res.json();
-			})
-			.then(jsonInfoPlanets => {
-				setProperties(jsonInfoPlanets.result);
-			});
-	}, []);
+	const { store, actions } = useContext(Context);
+	const [properties, setProperties] = useState("card-content");
+	const [infoPlanet, setInfoPlanet] = useState(store.infoPlanet);
 
 	return (
 		<div className="card">
-			<div className="card-content">
-				<h1 className="card-titel">{props.name}</h1>
-				<p className="card-description">Es un planeta</p>
-				<a className="card-button">Un planetazo </a>
+			<div className={properties}>
+				<h1 className="card-titel">{props.name_Planet}</h1>
 			</div>
 		</div>
 	);
 };
 
 PlanetCard.propTypes = {
-	name: PropTypes.string,
-	url: PropTypes.string,
-	iam: PropTypes.number
+	name_Planet: PropTypes.string,
+	url_Planet: PropTypes.string,
+	iam_Planet: PropTypes.string
 };
 
 export default PlanetCard;

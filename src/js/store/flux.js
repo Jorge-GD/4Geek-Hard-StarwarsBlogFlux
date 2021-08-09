@@ -5,48 +5,84 @@ const URL_BASE = "https://www.swapi.tech/api/";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			characters: [],
-			starships: [],
-			planets: []
+			people: [],
+			starship: [],
+			planets: [],
+			infoPlanets: [],
+			nextPlanet: "",
+			nextInfoPlanet: "",
+			nextPeople: ""
 		},
 		actions: {
 			getPlanets: () => {
-				let allPlanets = [];
+				let url = getStore().nextPlanet ? getStore().nextPlanet : URL_BASE.concat("planets?page=1&limit=10");
 
-				fetch(URL_BASE.concat("planets?page=1&limit=10"))
+				fetch(url)
 					.then(res => {
 						if (!res.ok) {
-							throw new Error("Algo ha ido mal");
+							throw new Error("Algo ha ido mal en Planets");
 						}
 
 						return res.json();
 					})
-					.then(jsonPlanets => console.log(jsonPlanets));
-			},
-			//
-			getStarhips: (page = 1) => {
-				fetch(URL_BASE.concat(`starships?page=${page}&limit=10`), {
-					method: "GET",
-					mode: "cors",
-					redirect: "follow"
-				})
-					.then(resp => {
-						if (!resp.ok) {
-							throw Error("Somethin is wrong", response.status);
+					.then(jsonPlanets => {
+						setStore({ planets: [...getStore().planets, ...jsonPlanets.results] });
+						if (jsonPlanets.next == "null") {
+							//Quitar == "null" para que se carguen todas
+							setStore({ nextPlanet: jsonPlanets.next });
+							getActions().getPlanets();
 						}
-						return resp.json();
+						console.log("Soy planetas", getStore().planets);
+					});
+			},
+			getPeople: () => {
+				let url = getStore().nextPeople ? getStore().nextPeople : URL_BASE.concat("people?page=1&limit=10");
+
+				fetch(url)
+					.then(res => {
+						if (!res.ok) {
+							throw new Error("oops");
+						}
+
+						return res.json();
 					})
-					.then(starshipJSON => {
-						console.log(starshipJSON);
-						setStore({ starships: starshipJSON.results });
+					.then(jsonPeople => {
+						setStore({ people: [...getStore().people, ...jsonPeople.results] });
+						if (jsonPeople.next) {
+							setStore({ nextPeople: jsonPeople.next });
+							getActions().getPeople();
+						}
 					})
 					.catch(error => {
 						console.log(error);
+					});
+			},
+
+			getInfoPlanets: () => {
+				let numberOfPlanet = 1;
+				let urlInfoPlanets = URL_BASE.concat("planets/" + numberOfPlanet);
+				console.log(urlInfoPlanets);
+
+				fetch(urlInfoPlanets)
+					.then(res => {
+						if (!res.ok) {
+							throw new Error("Algo ha ido mal en infoPlanets");
+						}
+
+						return res.json();
+					})
+					.then(jsonInfoPlanets => {
+						setStore({ infoPlanets: [...getStore().infoPlanets, jsonInfoPlanets] });
+						if ((jsonInfoPlanets = !null && numberOfPlanet <= 10)) {
+							setStore({ nextPlanet: jsonInfoPlanets.next });
+							getActions().getInfoPlanets();
+							numberOfPlanet = numberOfPlanet + 1;
+						}
+						console.log("Soy info planets", getStore().infoPlanets);
 					});
 			}
 		}
 	};
 	//
 };
-
 export default getState;

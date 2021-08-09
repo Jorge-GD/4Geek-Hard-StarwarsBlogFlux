@@ -1,16 +1,14 @@
 .planetcontainer{
-    background:url(http://artem.anmedio.ru/dev/planet/space.jpg) repeat;
+    background:url(https://i.imgur.com/GCJRhiA.png) no-repeat;
     background-color: white;
     margin: 0;
-    width: 100%;
-    height: 100%;
     position: relative;
+    background-size: 100%;
   }
 
   .styleCardPlanet{
 
-display: flex;
-flex-wrap: wrap;
+display:grid
 
   }
 
