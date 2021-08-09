@@ -1,32 +1,28 @@
 import React, { useState, useEffect, useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
-
 import { Context } from "../store/appContext";
-
 import "../../styles/planet.scss";
 import PlanetCard from "/workspace/react-hello-webapp/src/js/component/planetcard.js";
+
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
-	const [cardPlanet, setcardPlanet] = useState(store.planets);
+	const [cardPlanet, setcardPlanet] = useState([]);
 
-	useEffect(
-		() => {
-			console.log("Estoy en demo", store.planets);
-			setcardPlanet(
-				store.planets.map((inside, ind) => {
-					return <PlanetCard name={inside.name} url={inside.url} key={ind + 1} iam={ind} />;
-				})
-			);
-		},
-		[store.planets]
-	);
+	useEffect(() => {
+		setcardPlanet(
+			store.planets.map((inside, ind) => {
+				return (
+					<PlanetCard name_Planet={inside.name} url_Planet={inside.url} key={ind} iam_Planet={inside.uid} />
+				);
+			})
+		);
+	}, []);
 
 	return (
 		<Fragment>
 			<div className="planetcontainer">
 				<div className="styleCardPlanet">
 					{cardPlanet}
-
 					<div className="planet">
 						<div className="wrap">
 							<div className="background" />
@@ -36,9 +32,6 @@ export const Demo = () => {
 						<div className="mask" />
 					</div>
 				</div>
-				<Link to="/">
-					<button className="btn btn-primary">Back home</button>
-				</Link>
 			</div>
 		</Fragment>
 	);

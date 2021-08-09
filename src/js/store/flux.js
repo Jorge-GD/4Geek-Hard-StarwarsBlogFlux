@@ -6,7 +6,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people: [],
 			starship: [],
 			planets: [],
+			infoPlanets: [],
 			nextPlanet: "",
+			nextInfoPlanet: "",
 			nextPeople: ""
 		},
 		actions: {
@@ -16,7 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(url)
 					.then(res => {
 						if (!res.ok) {
-							throw new Error("Algo ha ido mal");
+							throw new Error("Algo ha ido mal en Planets");
 						}
 
 						return res.json();
@@ -28,7 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							setStore({ nextPlanet: jsonPlanets.next });
 							getActions().getPlanets();
 						}
-						console.log(getStore().planets);
+						console.log("Soy planetas", getStore().planets);
 					});
 			},
 			getPeople: () => {
@@ -51,6 +53,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => {
 						console.log(error);
+					});
+			},
+
+			getInfoPlanets: () => {
+				let numberOfPlanet = 1;
+				let urlInfoPlanets = URL_BASE.concat("planets/" + numberOfPlanet);
+				console.log(urlInfoPlanets);
+
+				fetch(urlInfoPlanets)
+					.then(res => {
+						if (!res.ok) {
+							throw new Error("Algo ha ido mal en infoPlanets");
+						}
+
+						return res.json();
+					})
+					.then(jsonInfoPlanets => {
+						setStore({ infoPlanets: [...getStore().infoPlanets, jsonInfoPlanets] });
+						if ((jsonInfoPlanets = !null && numberOfPlanet <= 10)) {
+							setStore({ nextPlanet: jsonInfoPlanets.next });
+							getActions().getInfoPlanets();
+							numberOfPlanet = numberOfPlanet + 1;
+						}
+						console.log("Soy info planets", getStore().infoPlanets);
 					});
 			}
 		}
