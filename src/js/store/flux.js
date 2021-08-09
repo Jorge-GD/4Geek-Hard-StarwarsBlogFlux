@@ -1,10 +1,12 @@
+import { useState } from "react";
+
 const URL_BASE = "https://www.swapi.tech/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			characters: [],
-			starship: [],
+			starships: [],
 			planets: []
 		},
 		actions: {
@@ -22,26 +24,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(jsonPlanets => console.log(jsonPlanets));
 			},
 			//
-			getStarhips: () => {
-				fetch(URL_BASE.concat("starship"))
-					.then(response => {
-						if (!response.ok) {
-							throw new Error("Something is wrong");
+			getStarhips: (page = 1) => {
+				fetch(URL_BASE.concat(`starships?page=${page}&limit=10`), {
+					method: "GET",
+					mode: "cors",
+					redirect: "follow"
+				})
+					.then(resp => {
+						if (!resp.ok) {
+							throw Error("Somethin is wrong", response.status);
 						}
-						return response.json();
+						return resp.json();
 					})
-					.then(jsonStarships => startship[jsonStarships])
-				//console.log(jsonStarships);
-					.then(jsonPlanets => {
-						jsonPlanets.results.map((planets, index) => {
-							allPlanets.push(planets);
-						});
-
-						setStore({ planets: allPlanets });
+					.then(starshipJSON => {
+						console.log(starshipJSON);
+						setStore({ starships: starshipJSON.results });
+					})
+					.catch(error => {
+						console.log(error);
 					});
 			}
 		}
 	};
+	//
 };
 
 export default getState;
