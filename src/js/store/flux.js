@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const URL_BASE = "https://www.swapi.tech/api/";
 
 const getState = ({ getStore, getActions, setStore }) => {
@@ -81,5 +83,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		}
 	};
+	//
 };
 export default getState;

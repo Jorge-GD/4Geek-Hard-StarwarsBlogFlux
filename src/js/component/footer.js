@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import "../../styles/footer.scss";
 
 export const Footer = () => (
-	<footer className="footer mt-auto  text-center fixed-bottom ">
+	<footer className="footer mt-auto  text-center ">
 		<div className="footer_div1">
-			<ul>
-				<h3>Visit our galaxies</h3>
+			<ul className="galaxies">
+				<h3 className="galaxies_title">Visit our galaxies</h3>
 				<li>
 					<a href="https://github.com/Azumydori">Victoria Laplana</a>
 				</li>
@@ -21,8 +21,8 @@ export const Footer = () => (
 		<div className="footer_div2" />
 
 		<div className="footer_div3">
-			<ul>
-				<h3>Visit our galaxies</h3>
+			<ul className="galaxies">
+				<h3 className="galaxies_title">Visit our galaxies</h3>
 				<li>
 					<a href="https://github.com/fernandoavilesrosado">characters</a>
 				</li>
