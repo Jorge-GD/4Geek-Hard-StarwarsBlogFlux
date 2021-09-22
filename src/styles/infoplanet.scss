@@ -13,11 +13,12 @@
 
 .boardInfoPlanet{
 display: grid;
-grid-template-columns: repeat(6, 1fr);
+
+grid-template-columns: repeat(7, 1fr);
 grid-template-areas: 
-"info1 info1 info2 info2 info3 info3"
-"info4 info4 info5 info5 info6 info6"
-"info7 info7 info8 info8 info9 info9 " ;
+". info1 info1 info2 info2 info3 info3"
+". info4 info4 info5 info5 info6 info6"
+". info7 info7 info8 info8 info9 info9 " ;
 }
 
 .containerInfoPlanet{
@@ -61,6 +62,11 @@ width: 100%;
 
 .divider {
     display: flex;
+    color: #FFFF00;
+    margin-right: 1rem;
+  
+  font-family: 'papyrus';
+  font-weight: 600;
     
     &:before,
     &:after {

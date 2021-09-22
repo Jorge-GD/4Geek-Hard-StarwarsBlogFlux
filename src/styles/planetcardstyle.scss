@@ -11,7 +11,13 @@
   line-height: 1.4;
 }
 
+.favIcon{
+  background-image: radial-gradient(circle, red, rgb(253, 136, 136), black);
+  color:red;
+  border-radius: 50%;
+  font-size: 30px;
 
+}
 .card {
   text-decoration: none;
   background-size: cover;
@@ -30,6 +36,7 @@
 }
 
 .card-content {
+
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0) 0%,

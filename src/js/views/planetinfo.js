@@ -29,7 +29,7 @@ const PlanetInfo = () => {
 						className="image"
 					/>
 				</div>
-				<h2 className="divider line glow">{infoPlanet.name}</h2>
+				<h2 className="divider line glow">{infoPlanet.name} </h2>
 				<div className="boardInfoPlanet">
 					<div className="propertie">
 						<div className="subPropertie">Clima:</div>
@@ -63,6 +63,14 @@ const PlanetInfo = () => {
 					<div className="propertie">
 						<div className="subPropertie">Poblacion:</div>
 						<div>{infoPlanet.population}</div>
+					</div>
+					<div className="propertie">
+						<button
+							className="fas fa-heart favIcon"
+							onClick={event => {
+								event.preventDefault();
+							}}
+						/>
 					</div>
 				</div>
 			</div>

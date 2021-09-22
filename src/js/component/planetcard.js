@@ -14,6 +14,12 @@ const PlanetCard = props => {
 		<Link to={URL_Planet} className="card">
 			<div className={properties}>
 				<h1 className="card-titel">{props.name_Planet}</h1>
+				<button
+					className="fas fa-heart favIcon"
+					onClick={event => {
+						event.preventDefault();
+					}}
+				/>
 			</div>
 		</Link>
 	);
