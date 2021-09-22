@@ -20,7 +20,7 @@ export const Carrousel = () => {
 							<h1 className="title_Carrousel">Species</h1>
 						</figure>
 						<figure className="shadow ">
-							<Link to="/Demo">
+							<Link to="/planet">
 								<img
 									src="https://media.giphy.com/media/3K0D1Dkqh9MOmLSjzW/giphy.gif"
 									alt="Death Stars kaboom"

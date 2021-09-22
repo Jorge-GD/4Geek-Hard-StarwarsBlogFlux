@@ -14,27 +14,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			nextPeople: ""
 		},
 		actions: {
-			getPlanets: () => {
-				let url = getStore().nextPlanet ? getStore().nextPlanet : URL_BASE.concat("planets?page=1&limit=10");
-
-				fetch(url)
-					.then(res => {
-						if (!res.ok) {
-							throw new Error("Algo ha ido mal en Planets");
-						}
-
-						return res.json();
-					})
-					.then(jsonPlanets => {
-						setStore({ planets: [...getStore().planets, ...jsonPlanets.results] });
-						if (jsonPlanets.next == "null") {
-							//Quitar == "null" para que se carguen todas
-							setStore({ nextPlanet: jsonPlanets.next });
-							getActions().getPlanets();
-						}
-						console.log("Soy planetas", getStore().planets);
-					});
-			},
 			getPeople: () => {
 				let url = getStore().nextPeople ? getStore().nextPeople : URL_BASE.concat("people?page=1&limit=10");
 
@@ -50,18 +29,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ people: [...getStore().people, ...jsonPeople.results] });
 						if (jsonPeople.next) {
 							setStore({ nextPeople: jsonPeople.next });
-							getActions().getPeople();
 						}
 					})
 					.catch(error => {
 						console.log(error);
 					});
 			},
-
-			getInfoPlanets: () => {
-				let numberOfPlanet = 1;
+			getInfoPlanets: numberOfPlanet => {
 				let urlInfoPlanets = URL_BASE.concat("planets/" + numberOfPlanet);
-				console.log(urlInfoPlanets);
+				console.log("soy URL info", urlInfoPlanets);
 
 				fetch(urlInfoPlanets)
 					.then(res => {
@@ -72,13 +48,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return res.json();
 					})
 					.then(jsonInfoPlanets => {
-						setStore({ infoPlanets: [...getStore().infoPlanets, jsonInfoPlanets] });
-						if ((jsonInfoPlanets = !null && numberOfPlanet <= 10)) {
-							setStore({ nextPlanet: jsonInfoPlanets.next });
-							getActions().getInfoPlanets();
-							numberOfPlanet = numberOfPlanet + 1;
+						console.log("Soy con resultado", jsonInfoPlanets.result);
+						console.log("Soy sin resultado", jsonInfoPlanets);
+						setStore({ nextInfoPlanet: jsonInfoPlanets.result.properties });
+					});
+			},
+			getPlanets: planet => {
+				let url =
+					planet == 1
+						? URL_BASE.concat("planets?page=1&limit=10")
+						: URL_BASE.concat("planets?page=")
+								.concat(planet)
+								.concat("&limit=10");
+				setStore({ planets: [] });
+				fetch(url)
+					.then(res => {
+						if (!res.ok) {
+							throw new Error("Algo ha ido mal en Planets");
 						}
-						console.log("Soy info planets", getStore().infoPlanets);
+
+						return res.json();
+					})
+					.then(jsonPlanets => {
+						localStorage.setItem("planets", jsonPlanets.results);
+						setStore({ ...setStore, planets: jsonPlanets.results });
+						setStore({ ...setStore, nextPlanet: planet });
+						console.log("Hey", planet);
+					});
+			},
+
+			getPlanetsDetails: uid => {
+				fetch(URL_BASE.concat("planets/", uid), { method: "GET" })
+					.then(function(response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(function(responseAsJson) {
+						setStore({ planetsDetails: responseAsJson });
+					})
+					.catch(error => {
+						console.log(error);
 					});
 			}
 		}

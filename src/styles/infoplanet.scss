@@ -1,0 +1,100 @@
+
+.boardInfoPlanet :nth-child(1)  { grid-area: info1; }
+.boardInfoPlanet :nth-child(2)  { grid-area: info2; }
+.boardInfoPlanet :nth-child(3)  { grid-area: info3; }
+.boardInfoPlanet :nth-child(4)  { grid-area: info4; }
+.boardInfoPlanet :nth-child(5)  { grid-area: info5; }
+.boardInfoPlanet :nth-child(6)  { grid-area: info6; }
+.boardInfoPlanet :nth-child(7)  { grid-area: info7; }
+.boardInfoPlanet :nth-child(8)  { grid-area: info8; }
+.boardInfoPlanet :nth-child(9) { grid-area: info9; }
+
+
+
+.boardInfoPlanet{
+display: grid;
+grid-template-columns: repeat(6, 1fr);
+grid-template-areas: 
+"info1 info1 info2 info2 info3 info3"
+"info4 info4 info5 info5 info6 info6"
+"info7 info7 info8 info8 info9 info9 " ;
+}
+
+.containerInfoPlanet{
+    background:url(https://wallpapercave.com/wp/wp2971469.jpg)  no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100vh;
+    margin:0;
+
+  }
+
+.propertie{
+    display: flex;
+    text-align: center;
+  color: #FFFF00;
+  
+  font-family: 'papyrus';
+  font-weight: 400;
+    
+}
+.subPropertie{
+    margin-right: 1rem;
+}
+
+.headerInfoPlanet{
+display: flex;
+justify-content: center;
+align-content: center;
+padding: 2rem;
+width: 100%;
+
+}
+.image{
+  width:70vh;
+  height: 50vh;
+  border-radius: 20px;
+
+}
+
+
+
+.divider {
+    display: flex;
+    
+    &:before,
+    &:after {
+      content: "";
+      flex: 1;
+    }
+  }
+  
+  // Base line
+  .line {
+    align-items: center;
+    margin: 1em -1em;
+    
+    &:before,
+    &:after {
+      height: 1px;
+      margin: 0 1em;
+    }
+  }
+  
+      .glow {
+      &:before,
+      &:after {
+        height: 8px;
+        filter: blur(3px);
+        border-radius: 5px;
+      }
+      
+      &:before {
+        background: linear-gradient(to right, rgb(255, 138, 138), rgb(255, 0, 21));
+      }
+      
+      &:after {
+        background: linear-gradient(to left, rgb(255, 137, 137), rgb(255, 0, 21));
+      }
+    }
+  

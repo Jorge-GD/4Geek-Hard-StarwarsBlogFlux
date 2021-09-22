@@ -6,23 +6,15 @@
     background-size: 100%;
   }
 
-  .styleCardPlanet{
-
-display:grid
-
-  }
-
-  .card:nth-child(1),.card:nth-child(1)::before{
-    background:url(https://static.wikia.nocookie.net/esstarwars/images/b/b0/Tatooine_TPM.png/revision/latest?cb=20131214162357)
-}
+  
   .planet{
     width:300px;
     height:300px;
     position:absolute;
     border-radius:50%;
     overflow:hidden;
-    box-shadow: 0 0 60px -20px rgba(255, 189, 3, 0.72), -14px -15px 40px -10px rgba(255, 238, 191, 0.23);
-    left:50%;
+    box-shadow: 10px 10px 80px 0px rgba(255, 83, 3, 0.72), -14px -15px 40px -10px rgba(255, 238, 191, 0.23);
+    left:49%;
     top:50%;
     margin:-150px;
   }
@@ -35,7 +27,7 @@ display:grid
   }
   .planet .background{
     animation: translateBackground 40s infinite linear;  
-    background:url(http://artem.anmedio.ru/dev/planet/mars.jpg) repeat-x;
+    background:url(https://svs.gsfc.nasa.gov/vis/a030000/a030300/a030362/euvi_aia304_2012_carrington_print.jpg) repeat-x;
     width:300px;
     height:300px;
     position:absolute;
@@ -73,4 +65,79 @@ display:grid
       transform:rotateZ(-360deg);
     }
   }
-  
+
+
+  .planetBoard :nth-child(1)  { grid-area: plt1; }
+  .planetBoard :nth-child(2)  { grid-area: plt2; }
+  .planetBoard :nth-child(3)  { grid-area: plt3; }
+  .planetBoard :nth-child(4)  { grid-area: plt4; }
+  .planetBoard :nth-child(5)  { grid-area: plt5; }
+  .planetBoard :nth-child(6)  { grid-area: plt6; }
+  .planetBoard :nth-child(7)  { grid-area: plt7; }
+  .planetBoard :nth-child(8)  { grid-area: plt8; }
+  .planetBoard :nth-child(9)  { grid-area: plt9; }
+  .planetBoard :nth-child(10) { grid-area: plt0; }
+
+
+
+.planetBoard{
+  display: grid;
+  grid-template-columns: repeat(6, 2fr);
+  grid-template-areas: 
+  ". plt0 plt1 plt3 plt2 ."
+  "plt11 plt5 . . plt6 plt12"
+  ". plt4 plt8 plt9 plt7  ." ;
+}
+
+
+.left {
+  grid-area: plt12;
+  background-color: aliceblue;
+  margin-left: 2rem;
+}
+
+.right {
+  grid-area: plt11;
+  background-color: red;
+  margin-right: 2rem;
+}
+
+
+.arrow {
+	position: absolute;
+	top: 50%;
+	width: 3vmin;
+	height: 3vmin;
+	background: transparent;
+	border-top: 1vmin solid white;
+	border-right: 1vmin solid white;
+	box-shadow: 0 0 0 lightgray;
+	transition: all 200ms ease;
+	
+	&.left {
+		left: 0;
+		transform: translate3d(0,-50%,0) rotate(-135deg);
+    
+	}
+
+	&.right {
+    grid-area: plt11;
+		right: 0;
+		transform: translate3d(0,-50%,0) rotate(45deg);
+	}
+	
+	&:hover {
+		border-color: orange;
+		box-shadow: 0.5vmin -0.5vmin 0 white;
+	}
+	
+	&:before { // for better hit area
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-40%,-60%) rotate(45deg);
+		width: 200%;
+		height: 200%;
+	}
+}

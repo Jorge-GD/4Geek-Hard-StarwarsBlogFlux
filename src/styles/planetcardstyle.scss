@@ -13,7 +13,7 @@
 
 
 .card {
-  background: url(https://images.unsplash.com/photo-1625595092803-545388db5615?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+  text-decoration: none;
   background-size: cover;
   background-repeat: no-repeat;
   padding: 6em 0 0 0;
@@ -75,3 +75,86 @@
 .card-button:focus {
   background-color: var(--accent);
 }
+
+
+
+.card:nth-child(1)  { 
+  animation: translateBackground 40s infinite linear;  
+  background:url(https://www.johnstonsarchive.net/spaceart/cmaps/wetmarsmap.jpg) repeat-y;;
+}
+.card:nth-child(2)  { animation: translateBackground 40s infinite linear;  
+  background:url(https://cdn.pixabay.com/photo/2020/02/04/17/02/map-4818850_960_720.jpg) repeat-y;
+  animation-name: CornerTopRight;
+  animation-duration: 30s;
+  animation-iteration-count: infinite
+}
+.card:nth-child(3)  { animation: translateBackground 40s infinite linear;  
+  background:url(https://bjj.mmedia.is/data/venus/venus.jpg) repeat-y;;
+}
+.card:nth-child(4)  {   
+  background:url(https://solarsystem.nasa.gov/system/downloadable_items/671_PIA17386.jpg) repeat-y;
+  animation-name: CornerBottomLeft;
+  animation-duration: 30s;
+  animation-iteration-count: infinite
+}
+.card:nth-child(5)  { animation: translateBackground 40s infinite linear;  
+  background:url(https://supernova.eso.org/static/archives/exhibitionimages/screen/Venus-map-Mariner-artwork-10x5k-CC2.jpg) repeat-y;;
+}
+.card:nth-child(6)  { animation: translateBackground 40s infinite linear;  
+  background:url(https://supernova.eso.org/static/archives/exhibitionimages/screen/NEP0VTT1-CC-10x5k.jpg) repeat-y;;
+}
+.card:nth-child(7)  { animation: translateBackground 40s infinite linear;  
+  background:url(https://planetary.s3.amazonaws.com/web/assets/pictures/20180517_GlobalColor2017_equi_64ppd_1000_750_430_10percent.jpg) repeat-y;
+  animation-name: CornerBottomRight;
+  animation-duration: 30s;
+  animation-iteration-count: infinite
+}
+.card:nth-child(8)  { animation: translateBackground 40s infinite linear;  
+  background:url(https://upload.wikimedia.org/wikipedia/commons/7/72/Venus_map_NASA_JPL_Magellan-Venera-Pioneer.jpg) repeat-y;;
+}
+.card:nth-child(9)  {  
+  
+  background:url(https://lumiere-a.akamaihd.net/v1/images/Coruscant_03db43b4.jpeg?region=0%2C0%2C1536%2C864&width=960) repeat-y;
+  }
+.card:nth-child(10)  {  
+  background:url(https://i.redd.it/0ok8mwqxjq061.jpg) repeat-x;
+  animation-name: CornerTopLeft;
+  animation-duration: 30s;
+  animation-iteration-count: infinite
+}
+
+
+
+
+@keyframes CornerBottomRight {
+  0%   {right:0px; bottom:0px;}
+  25%  {right:60rem; bottom:0rem;}
+  50%  {right:60rem; bottom:35rem}
+  75%  {right:0px; bottom:35rem;}
+  100% {right:0px; bottom:0px;}
+}
+
+@keyframes CornerBottomLeft {
+  0%   {left:0px; bottom:0px;}
+  25%  {left:0; bottom:35rem;}
+  50%  {left:60rem; bottom:35rem}
+  75%  {left:60rem; bottom:0;}
+  100% {left:0px; bottom:0px;}
+}
+@keyframes CornerTopLeft {
+  0%   {left:0px; top:0px;}
+  25%  {left:60rem; top:0rem;}
+  50%  {left:60rem; top:35rem}
+  75%  {left:0px; top:35rem;}
+  100% {left:0px; top:0px;}
+}
+@keyframes CornerTopRight {
+  0%   {right:0px; top:0px;}
+  25%  {right:0; top:35rem;}
+  50%  {right:60rem; top:35rem}
+  75%  {right:60rem; top:0;}
+  100% {right:0px; top:0px;}
+}
+
+
+
