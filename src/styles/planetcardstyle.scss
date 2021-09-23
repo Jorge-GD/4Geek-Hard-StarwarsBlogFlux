@@ -2,7 +2,7 @@
   --main: ##1e1f26;
   --accent: #b3b3b3;
   --white: #fff;
-  --signal: #000000;
+  --signal: #ffe600;
 }
 *,
 *::before,
@@ -12,9 +12,10 @@
 }
 
 .favIcon{
-  background-image: radial-gradient(circle, red, rgb(253, 136, 136), black);
-  color:red;
+  background:transparent;
+  color:#ffe600;
   border-radius: 50%;
+  border: none;
   font-size: 30px;
 
 }
@@ -29,7 +30,7 @@
   border-radius: 100%;
   overflow: hidden;
   transition: ease-in-out 0.3s;
-  box-shadow: 5px 8px 12px 2px rgba(255, 163, 135, 0.2);
+  box-shadow: 5px 8px 12px 2px rgba(253, 244, 112, 0.2);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   transform: scale(0.7);

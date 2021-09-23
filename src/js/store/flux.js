@@ -48,8 +48,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return res.json();
 					})
 					.then(jsonInfoPlanets => {
-						console.log("Soy con resultado", jsonInfoPlanets.result);
-						console.log("Soy sin resultado", jsonInfoPlanets);
 						setStore({ nextInfoPlanet: jsonInfoPlanets.result.properties });
 					});
 			},
@@ -73,23 +71,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						localStorage.setItem("planets", jsonPlanets.results);
 						setStore({ ...setStore, planets: jsonPlanets.results });
 						setStore({ ...setStore, nextPlanet: planet });
-						console.log("Hey", planet);
-					});
-			},
-
-			getPlanetsDetails: uid => {
-				fetch(URL_BASE.concat("planets/", uid), { method: "GET" })
-					.then(function(response) {
-						if (!response.ok) {
-							throw Error(response.statusText);
-						}
-						return response.json();
-					})
-					.then(function(responseAsJson) {
-						setStore({ planetsDetails: responseAsJson });
-					})
-					.catch(error => {
-						console.log(error);
 					});
 			}
 		}
