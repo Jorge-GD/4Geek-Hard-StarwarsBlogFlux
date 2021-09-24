@@ -1,0 +1,49 @@
+.containerInfoPeople {
+    background-image: url("https://cdn.eso.org/images/screen/eso1132e.jpg");
+}
+.properties, .subProperties {
+    color:yellow;
+    font-size: 1rem;
+    align-items: center;
+    padding:1rem;
+}
+
+.properties{
+    font-weight:bold;
+}
+
+.subProperties{
+    padding:0.5rem;
+}
+
+.imagePeople {
+    height:30rem;
+    width:40rem;
+    padding: 2rem;
+    margin:1rem;
+}
+
+.headerInfoPeople {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.propertiesInfoPeople {
+    display: flex;
+    flex-direction: column;
+}
+
+.peopleGeneralInfo {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.infoForPeople{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}

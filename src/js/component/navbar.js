@@ -27,7 +27,7 @@ export const Navbar = () => {
 
 			<div className=" div_buttons ">
 				<div className="ml-auto">
-					<Link to="/">
+					<Link to="/people">
 						<button className="btn  ">People</button>
 					</Link>
 					<div className="ml-auto">
@@ -35,7 +35,7 @@ export const Navbar = () => {
 							<button className="btn">Ships</button>
 						</Link>
 						<div className="ml-auto">
-							<Link to="/">
+							<Link to="/planet">
 								<button className="btn">Planets</button>
 							</Link>
 							<div className="ml-auto">
