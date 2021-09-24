@@ -36,7 +36,7 @@ const injectContext = PassedComponent => {
 			//	: state.actions.getPeople();
 			state.actions.getPlanets(1);
 			//state.actions.getStarhips();
-			//state.actions.getPeople();
+			state.actions.getPeople(1);
 			//localStorage.getItem("planets")
 			//	? (state.store.planets = localStorage.getItem("planets"))
 			//	: state.actions.getPlanets();

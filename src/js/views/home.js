@@ -11,7 +11,6 @@ export const Home = () => {
 	return (
 		<Fragment>
 			<Carrousel />
-			<PeopleCardViews />
 		</Fragment>
 	);
 };
