@@ -1,84 +1,78 @@
 :root {
-    --main: ##1e1f26;
-    --accent: #b3b3b3;
-    --white: #fff;
-    --signal: #e31b2c;
-  }
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    line-height: 1.4;
-  }
-  
-  
-  .peopleCardContainer {
-    background: url(https://images.unsplash.com/photo-1625595092803-545388db5615?ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 3em 0 0 0;
-    margin-top: 2rem;
-    max-width: 400px;
-    border-radius: 1rem;
-    overflow: hidden;
-    transition: ease-in-out 0.3s;
-    box-shadow: 5px 8px 12px 2px rgba(255, 163, 135, 0.2);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    transform: scale(0.7);
-  }
-  
-  .peopleCardContent {
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.2) 10%,
-      rgba(0, 0, 0, 0.4) 20%,
-      rgba(0, 0, 0, 1) 100%
-    );
-    padding: 1em 2em;
-    color: var(--white);
-    transform: translateY(24em);
-    transition: ease-in-out 0.5s;
-    height: 100%;
-  }
-  
-  .peopleCardName {
-    position: relative;
-  }
-  .peopleCardContainer:hover {
-    transform: scale(1.02);
-  }
-  .peopleCardContainer:hover .card-titel::after {
-    transform: translateX(-10%);
-  }
-  .peopleCardContainer:hover .peopleCardContent {
-    transform: translateY(0);
-  }
-  .peopleCardName::after {
-    content: "";
-    height: 4px;
-    width: 100%;
-    background-color: var(--signal);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    transform: translateX(-90%);
-    transition: ease-in-out 0.5s;
-    transition-delay: 0.5s;
-  }
-  //<a className="card-button">Un planetazo </a>
-  .peopleButton {
-    display: inline-block;
-    padding: 0.5rem 2rem;
-    border-radius: 0.2rem;
-    background-color: var(--signal);
-    cursor: pointer;
-    font-weight: 700;
-  }
-  
-  .peopleButton:hover,
-  .peopleButton:focus {
-    background-color: var(--accent);
-  }
-  
+  --main: ##1e1f26;
+  --accent: #b3b3b3;
+  --white: #fff;
+  --signal: #ffe600;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  line-height: 1.4;
+}
+
+.favIcon{
+  background:transparent;
+  color:#ffe600;
+  border-radius: 50%;
+  border: none;
+  font-size: 30px;
+
+}
+.peopleCardContainer {
+  background-image: url("https://hipertextual.com/wp-content/uploads/2021/05/darth-vader.jpeg");
+  text-decoration: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 6em 0 0 0;
+  margin-top: 2rem;
+  width:  25rem;
+  border-radius: 25%;
+  overflow: hidden;
+  transition: ease-in-out 0.3s;
+  box-shadow: 5px 8px 12px 2px rgba(253, 244, 112, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transform: scale(0.7);
+}
+
+.peopleCardContent {
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.2) 10%,
+    rgba(0, 0, 0, 0.4) 20%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  padding: 1em 2em;
+  color: var(--white);
+  transform: translateY(24em);
+  transition: ease-in-out 0.5s;
+  height: 100%;
+}
+
+.peopleCardName {
+  position: relative;
+}
+.peopleCardContainer:hover {
+  transform: scale(1.02);
+}
+.peopleCardContainer:hover .peopleCardName::after {
+  transform: translateX(-10%);
+}
+.peopleCardContainer:hover .peopleCardContent {
+  transform: translateY(0);
+}
+.peopleCardName::after {
+  content: "";
+  height: 4px;
+  width: 100%;
+  background-color: var(--signal);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-90%);
+  transition: ease-in-out 0.5s;
+  transition-delay: 0.5s;
+}

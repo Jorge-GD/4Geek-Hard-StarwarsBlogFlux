@@ -9,7 +9,8 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Demo } from "./views/planet";
 import { StarshipsCards_Views } from "./views/starshipsCards_View";
-import PeopleCards from "./component/peoplecard";
+import PeopleCardViews from "./views/peoplecardviews";
+import PeopleCardViewsDetail from "./views/peoplecardviews_detail";
 import Planet from "./views/planet";
 import PlanetInfo from "./views/planetinfo";
 
@@ -36,6 +37,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/starships">
 							<StarshipsCards_Views />
+						</Route>
+						<Route exact path="/people">
+							<PeopleCardViews />
+						</Route>
+						<Route exact path="/people/:id">
+							<PeopleCardViewsDetail />
 						</Route>
 
 						<Route>
